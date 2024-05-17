@@ -22,9 +22,10 @@ body {
   position: relative;
   background-image: url(../images/road.png);
   background-size: cover;
-  animation: slide 5s linear infinite;
+  animation: slide 5s linear infinite; /* background moving */
 }
 
+/* background moving */
 @keyframes slide {
   0% {
     background-position: 0 -1000px;
