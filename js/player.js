@@ -16,11 +16,20 @@ class Player {
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
     this.gameScreen.appendChild(this.element);
+    // this.honkSound = new Audio ('') // path to file
+    // this.honkSound.volume = 0.1;
   }
-  move() { // updates car position
+  move() {
+    // updates car position
     this.left += this.directionX;
     this.top += this.directionY;
-    this.updatePosition()
+    if (this.left <= 35) {
+      this.left = 35;
+    }
+    if (this.left >= 465 - this.width) {
+      this.left = 465 - this.width;
+    }
+    this.updatePosition();
   }
 
   updatePosition() {
@@ -32,12 +41,20 @@ class Player {
     const playerRect = this.element.getBoundingClientRect();
     const obstacleRect = obstacle.element.getBoundingClientRect();
 
-    if ( // all of the below needs to be true for a collision to be true
+    if (
+      // all of the below needs to be true for a collision to be true
       playerRect.left < obstacleRect.right &&
       playerRect.right > obstacleRect.left &&
       playerRect.top < obstacleRect.bottom &&
       playerRect.bottom > obstacleRect.top
     ) {
+      this.element.classList.add("spin");
+      setTimeout(() => {
+        this.element.classList.remove("spin");
+      }, 500);
+      // play a sound/song
+      // this.honkSound.play();
+      // this.honkSound.pause();
       return true;
     } else {
       return false;

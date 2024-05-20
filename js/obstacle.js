@@ -2,14 +2,14 @@ class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
     this.positionArr = [85, 300];
-    this.randomIndex = Math.floor(Math.random() * this.positionArr.length)
-    this.left = this.positionArr[this.randomIndex]
+    this.randomIndex = Math.floor(Math.random() * this.positionArr.length);
+    this.left = this.positionArr[this.randomIndex];
     this.top = -250;
     this.width = 100;
     this.height = 150;
 
     this.element = document.createElement("img");
-    this.element.src = "./images/redCar.png"
+    this.element.src = "./images/redCar.png";
     this.element.style.position = "absolute";
 
     this.element.style.top = `${this.top}px`;
